@@ -1,3 +1,20 @@
+Pally:
+import os
+import asyncio
+import httpx
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from threading import Thread
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
+
+async def start(update, context):
+    await update.message.reply_text("أهلاً! ابعتلي سؤالك وبحاول جاوبك")
+
+async def chat(update, context):
+    try:
+        async with httpx. AsyncClient(timeout=120) as client:
+            response = await client.post(
+
 headers={
                     "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
                     "Content-Type": "application/json",
